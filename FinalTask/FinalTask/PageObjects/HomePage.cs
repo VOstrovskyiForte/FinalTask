@@ -15,6 +15,8 @@ namespace FinalTask.PageObjects
 
         public IWebDriver driver;
         public HomePage(IWebDriver driver): base(driver) => this.driver = driver;
+
+
     }
 
 

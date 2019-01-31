@@ -70,6 +70,8 @@
     <Compile Include="Framework\APIMethods.cs" />
     <Compile Include="Framework\ConfigurationAPI.cs" />
     <Compile Include="Framework\ConfigurationWeb.cs" />
+    <Compile Include="Framework\Data.cs" />
+    <Compile Include="Framework\Drivers.cs" />
     <Compile Include="Framework\Files.cs" />
     <Compile Include="Framework\Folders.cs" />
     <Compile Include="Framework\Logging.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="TestsAPI\BaseTestAPI.cs" />
     <Compile Include="TestsWeb\BaseTestWeb.cs" />
     <Compile Include="TestsWeb\TestTemp.cs" />
+    <Compile Include="TestsWeb\WebTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

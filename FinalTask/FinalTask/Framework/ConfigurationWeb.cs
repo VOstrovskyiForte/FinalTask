@@ -14,7 +14,8 @@ namespace FinalTask.Framework
     public class ConfigurationWeb
     {
 
-        public static string baseURL = "https://phptravels.com/";
+        public static string baseURL;
+        public static string reportsFolder;
         public static string browser;
         public static string environment;
 
@@ -36,16 +37,10 @@ namespace FinalTask.Framework
             XmlNode settings = webConfig.DocumentElement.SelectSingleNode("/settings");
             browser = settings.SelectSingleNode("browser").InnerText;
             environment = settings.SelectSingleNode("environment").InnerText;
+            baseURL = settings.SelectSingleNode("baseurl").InnerText;
+            reportsFolder = settings.SelectSingleNode("reportsfolder").InnerText;
         }
 
-        public IWebDriver GetDriver()
-        {
-            switch (browser)
-            {
-                case "chrome": return new ChromeDriver();
-                case "firefox": return new FirefoxDriver();
-                default: return new ChromeDriver();
-            }
-        }
+        
     }
 }

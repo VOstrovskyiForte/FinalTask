@@ -7,24 +7,59 @@ using System.Threading.Tasks;
 using FinalTask.Framework;
 using Serilog;
 using System.IO;
+using OpenQA.Selenium;
+using NUnit.Framework.Interfaces;
 
 namespace FinalTask.TestsWeb
 {
     public class BaseTestWeb
     {
 
+        public IWebDriver driver;
+
         [OneTimeSetUp]
         public void BaseOneTimeSetUp()
         {
 
-            Log.Logger = Logging.CreateLogger(Path.Combine(@"C:\Reports\", "log" + DateTime.Now.ToString("yyyy-MM-dd HH-dd")));
             ConfigurationWeb.LoadConfiguration();
+            Log.Logger = Logging.CreateLogger(Path.Combine(ConfigurationWeb.reportsFolder, "log" + DateTime.Now.ToString("yyyy-MM-dd HH-dd") + ".txt"));            
             OneTimeSetUp();
         }
 
         public virtual void OneTimeSetUp()
         {
 
+        }
+
+        [SetUp]
+        public void BaseSetUp()
+        {
+
+            Log.Information("Test case " + TestContext.CurrentContext.Test.MethodName + " is started");
+            SetUp();
+        }
+
+        public virtual void SetUp()
+        {
+
+        }
+
+        [TearDown]
+        public void BaseTearDown()
+        {
+
+            Log.Information("Test case " + TestContext.CurrentContext.Test.MethodName + " is finished");
+            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
+            {
+                Log.Error("Test case " + TestContext.CurrentContext.Test.MethodName + " is failed with message " + TestContext.CurrentContext.Result.Message);
+            }
+            TearDown();
+            driver.Quit();
+        }
+
+        public virtual void TearDown()
+        {
+            
         }
 
         [OneTimeTearDown]

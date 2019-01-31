@@ -19,6 +19,16 @@ namespace FinalTask.PageObjects
         public IWebElement QuickNewsLeftButton => driver.FindElement(By.XPath("//a[@href='#quick-news' and @data-slide='prev']"));
         public IWebElement QuickNewsRightButton => driver.FindElement(By.XPath("//a[@href='#quick-news' and @data-slide='next']"));
 
+        public IWebElement MainMenuPanel => driver.FindElement(By.Id("main-menu"));
+        public IWebElement MainMenuDemoItem => MainMenuPanel.FindElement(By.LinkText("Demo"));
+        public IWebElement MainMenuPricingItem => MainMenuPanel.FindElement(By.LinkText("Pricing"));
+        public IWebElement MainMenuFeaturesItem => MainMenuPanel.FindElement(By.XPath("//span[text()='Features']"));
+        public IWebElement MainMenuProductItem => MainMenuPanel.FindElement(By.XPath("//span[text()='Product']"));
+        public IWebElement MainMenuHostingItem => MainMenuPanel.FindElement(By.XPath("//span[text()='Hosting']"));
+        public IWebElement MainMenuServicesItem => MainMenuPanel.FindElement(By.XPath("//span[text()='Services']"));
+        public IWebElement MainMenuCompanyItem => MainMenuPanel.FindElement(By.XPath("//span[text()='Company']"));
+        public IWebElement MainMenuLoginItem => MainMenuPanel.FindElement(By.XPath("Login"));
+
         //...other elements will be added if necessary
 
         //Footer
@@ -44,5 +54,7 @@ namespace FinalTask.PageObjects
             SubscribeButton.Click();
             return SubscribeMessge.Text;
         }
+
+        //... other methods will be added if necessary
     }
 }
