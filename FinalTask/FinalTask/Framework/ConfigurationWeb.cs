@@ -14,11 +14,11 @@ namespace FinalTask.Framework
     public class ConfigurationWeb
     {
 
-
+        public static string baseURL = "https://phptravels.com/";
         public static string browser;
         public static string environment;
 
-        public void LoadConfiguration()
+        public static void LoadConfiguration()
         {
 
             string webConfigFilePath = Path.Combine(Folders.GetRootProjectFolder(), "webconfig.xml");
