@@ -67,7 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Framework\APIMethods.cs" />
+    <Compile Include="Framework\API\Actions.cs" />
+    <Compile Include="Framework\API\Methods.cs" />
+    <Compile Include="Framework\API\Models\Posts.cs" />
+    <Compile Include="Framework\API\Resources.cs" />
     <Compile Include="Framework\ConfigurationAPI.cs" />
     <Compile Include="Framework\ConfigurationWeb.cs" />
     <Compile Include="Framework\Data.cs" />

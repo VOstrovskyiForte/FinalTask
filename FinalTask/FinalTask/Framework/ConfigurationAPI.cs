@@ -12,7 +12,7 @@ namespace FinalTask.Framework
     {
 
 
-        public static string browser;
+        public static string baseURL = "https://jsonplaceholder.typicode.com/";
         public static string environment;
 
         public static void LoadConfiguration()
@@ -31,7 +31,7 @@ namespace FinalTask.Framework
             XmlDocument webConfig = new XmlDocument();
             webConfig.Load(webConfigFilePath);
             XmlNode settings = webConfig.DocumentElement.SelectSingleNode("/settings");
-            browser = settings.SelectSingleNode("browser").InnerText;
+            baseURL = settings.SelectSingleNode("baseurl").InnerText;
             environment = settings.SelectSingleNode("environment").InnerText;
         }
     }

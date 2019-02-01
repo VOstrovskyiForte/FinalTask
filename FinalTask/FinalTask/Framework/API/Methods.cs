@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalTask.Framework
+namespace FinalTask.Framework.API
 {
-    public class APIMethods
+    public class Methods
     {
 
 
