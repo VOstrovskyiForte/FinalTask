@@ -22,6 +22,7 @@ namespace FinalTask.TestsWeb
         {
 
             ConfigurationWeb.LoadConfiguration();
+            ConfigurationWeb.currentRunScreenshotsFolder = ConfigurationWeb.CreateTemporatyScreenshotsFolder();
             Log.Logger = Logging.CreateLogger(Path.Combine(ConfigurationWeb.reportsFolder, "log" + DateTime.Now.ToString("yyyy-MM-dd HH-dd") + ".txt"));            
             OneTimeSetUp();
         }
@@ -52,7 +53,7 @@ namespace FinalTask.TestsWeb
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
                 Log.Error("Test case " + TestContext.CurrentContext.Test.MethodName + " is failed with message " + TestContext.CurrentContext.Result.Message);
-                Logging.SaveScreenshotToFolder(driver, ConfigurationWeb.reportsFolder, TestContext.CurrentContext.Test.MethodName + " " + DateTime.Now.ToString("yyyy-MM-dd, hh-mm"));
+                Logging.SaveScreenshotToFolder(driver, ConfigurationWeb.currentRunScreenshotsFolder, TestContext.CurrentContext.Test.MethodName + " " + DateTime.Now.ToString("yyyy-MM-dd, hh-mm"));
             }
             TearDown();
         }

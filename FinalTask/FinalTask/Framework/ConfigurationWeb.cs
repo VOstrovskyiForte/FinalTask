@@ -18,6 +18,11 @@ namespace FinalTask.Framework
         public static string reportsFolder;
         public static string browser;
         public static string environment;
+        public static string screenshotsFolder;
+
+        public static string currentRunScreenshotsFolder;
+        public static string testDataPath;
+
 
         public static void LoadConfiguration()
         {
@@ -39,8 +44,18 @@ namespace FinalTask.Framework
             environment = settings.SelectSingleNode("environment").InnerText;
             baseURL = settings.SelectSingleNode("baseurl").InnerText;
             reportsFolder = settings.SelectSingleNode("reportsfolder").InnerText;
+
+            testDataPath = Path.Combine(Folders.GetRootProjectFolder(), "testdata");
         }
 
         
+        public static string CreateTemporatyScreenshotsFolder()
+        {
+            string screenshotsFolderName = "Screenshots-" + DateTime.Now.ToString("yyyy-MM-dd,hh-mm");
+            string fullPathToScreenshotsFolder = Path.Combine(ConfigurationWeb.screenshotsFolder, screenshotsFolderName);
+            Directory.CreateDirectory(fullPathToScreenshotsFolder);
+            return fullPathToScreenshotsFolder;
+        }
+
     }
 }
