@@ -1,4 +1,7 @@
 <settings>
 <browser>chrome</browser>
 <environment>release</environment>
+<baseurl>https://phptravels.com/</baseurl>
+<reportsfolder>C:\Reports\</reportsfolder>
+<screenshotsfolder>C:\Screenshots\</screenshotsfolder>
 </settings>

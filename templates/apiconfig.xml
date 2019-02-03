@@ -1,2 +1,5 @@
 <settings>
+<baseurl>https://jsonplaceholder.typicode.com/</baseurl>
+<environment>release</environment>
+<reportsfolder>C:\Reports\</reportsfolder>
 </settings>

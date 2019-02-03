@@ -33,6 +33,11 @@ namespace FinalTask.Framework.API.Models
             public int userId { get; set; }
         }
 
+        public class PostIdResponseModel
+        {
+            public int id { get; set; }
+        }
+
         public class PostsListModel
         {
             public List<PostModel> posts { get; set; }

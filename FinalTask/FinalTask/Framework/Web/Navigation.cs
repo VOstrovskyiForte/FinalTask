@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalTask.Framework
+namespace FinalTask.Framework.Web
 {
     public static class Navigation
     {
@@ -17,5 +17,7 @@ namespace FinalTask.Framework
             driver.Navigate().GoToUrl(ConfigurationWeb.baseURL);
             return new HomePage(driver);
         }
+
+        //other navigations will be added if needed
     }
 }

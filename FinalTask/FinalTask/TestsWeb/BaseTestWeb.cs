@@ -9,6 +9,8 @@ using Serilog;
 using System.IO;
 using OpenQA.Selenium;
 using NUnit.Framework.Interfaces;
+using System.Collections;
+using FinalTask.Framework.Web;
 
 namespace FinalTask.TestsWeb
 {
@@ -17,13 +19,16 @@ namespace FinalTask.TestsWeb
 
         public IWebDriver driver;
 
+        public static string baseURL = ConfigurationWeb.baseURL;
+
         [OneTimeSetUp]
         public void BaseOneTimeSetUp()
         {
 
             ConfigurationWeb.LoadConfiguration();
             ConfigurationWeb.currentRunScreenshotsFolder = ConfigurationWeb.CreateTemporatyScreenshotsFolder();
-            Log.Logger = Logging.CreateLogger(Path.Combine(ConfigurationWeb.reportsFolder, "log" + DateTime.Now.ToString("yyyy-MM-dd HH-dd") + ".txt"));            
+            Log.Logger = Logging.CreateLogger(Path.Combine(ConfigurationWeb.reportsFolder, "log" + DateTime.Now.ToString("yyyy-MM-dd HH-dd") + ".txt"));
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
             OneTimeSetUp();
         }
 

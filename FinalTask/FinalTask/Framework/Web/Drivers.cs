@@ -8,7 +8,7 @@ using FinalTask.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 
-namespace FinalTask.Framework
+namespace FinalTask.Framework.Web
 {
     public class Drivers
     {

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace FinalTask.Framework
+namespace FinalTask.Framework.Web
 {
     public class ConfigurationWeb
     {
@@ -45,7 +45,7 @@ namespace FinalTask.Framework
             baseURL = settings.SelectSingleNode("baseurl").InnerText;
             reportsFolder = settings.SelectSingleNode("reportsfolder").InnerText;
 
-            testDataPath = Path.Combine(Folders.GetRootProjectFolder(), "testdata");
+            testDataPath = Path.Combine(Folders.GetRootProjectFolder(), "testdata/web");
         }
 
         

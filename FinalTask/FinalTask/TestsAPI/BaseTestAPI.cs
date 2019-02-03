@@ -8,21 +8,22 @@ using FinalTask.Framework;
 using Serilog;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
+using System.IO;
+using FinalTask.Framework.API;
 
 namespace FinalTask.TestsAPI
 {
-    public class BaseTestWeb
+    public class BaseTestAPI
     {
 
-        public IWebDriver driver;
-
-        public static string baseURL = "https://jsonplaceholder.typicode.com/";
+        public static string baseURL = ConfigurationAPI.baseURL;
 
         [OneTimeSetUp]
         public void BaseOneTimeSetUp()
         {
-            
 
+            ConfigurationAPI.LoadConfiguration();
+            Log.Logger = Logging.CreateLogger(Path.Combine(ConfigurationAPI.reportsFolder, "log" + DateTime.Now.ToString("yyyy-MM-dd HH-dd") + ".txt"));
             OneTimeSetUp();
         }
 
@@ -52,7 +53,6 @@ namespace FinalTask.TestsAPI
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
                 Log.Error("Test case " + TestContext.CurrentContext.Test.MethodName + " is failed with message " + TestContext.CurrentContext.Result.Message);
-                Logging.SaveScreenshotToFolder(driver, ConfigurationWeb.reportsFolder, TestContext.CurrentContext.Test.MethodName + " " + DateTime.Now.ToString("yyyy-MM-dd, hh-mm"));
             }
             TearDown();
         }

@@ -10,7 +10,7 @@ namespace FinalTask.PageObjects
     public class BasePage
     {
 
-        private IWebDriver driver;
+        public IWebDriver driver;
         public BasePage(IWebDriver driver) => this.driver = driver;
 
         //Header
@@ -29,6 +29,11 @@ namespace FinalTask.PageObjects
         public IWebElement MainMenuCompanyItem => MainMenuPanel.FindElement(By.XPath("//span[text()='Company']"));
         public IWebElement MainMenuLoginItem => MainMenuPanel.FindElement(By.XPath("Login"));
 
+        public IWebElement HostingMenuSharedHostingItem => MainMenuPanel.FindElement(By.LinkText("Shared Hosting"));
+        public IWebElement HostingMenuVPSHostingItem => MainMenuPanel.FindElement(By.LinkText("VPS Hosting"));
+        public IWebElement HostingMenuDedicatedServersItem => MainMenuPanel.FindElement(By.LinkText("Dedicated Servers"));
+
+
         //...other elements will be added if necessary
 
         //Footer
@@ -46,7 +51,14 @@ namespace FinalTask.PageObjects
         public IWebElement FooterLinkedInLink => BottomPanel.FindElement(By.XPath("//i[contains(@class,'fa-linkedin')]"));
         public IWebElement FooterInstagramLink => BottomPanel.FindElement(By.XPath("//i[contains(@class,'fa-instagram')]"));
 
+
         //... other elements will be added if necessary
+
+        public BasePage RefreshPage()
+        {
+            driver.Navigate().Refresh();
+            return new BasePage(driver);
+        }
 
         public string SubscribeWithEmail(string email)
         {

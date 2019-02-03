@@ -13,20 +13,38 @@ namespace FinalTask.Framework.API
     {
 
 
-        public IRestResponse GetPost(int id)
+        public static IRestResponse GetPost(int postid)
         {
-            return SendRequest(Method.GET, ConfigurationAPI.baseURL, Resources.posts + "/" + id);
+            return SendRequest(Method.GET, ConfigurationAPI.baseURL, Resources.posts + "/" + postid);
         }
 
-        public IRestResponse GetAllPosts()
+        public static IRestResponse GetAllPosts()
         {
             return SendRequest(Method.GET, ConfigurationAPI.baseURL, Resources.posts);
         }
 
-        public IRestResponse CreatePost(int userId, string title, string body)
+        public static IRestResponse GetAllPosts(int userId)
+        {
+            return SendRequest(Method.GET, ConfigurationAPI.baseURL, Resources.posts + "?userId=" + userId.ToString());
+        }
+
+        public static IRestResponse CreatePost(int userId, string title, string body)
         {
             PostCreateModel post = new PostCreateModel(userId, title, body);
             return SendRequest(Method.POST, ConfigurationAPI.baseURL, Resources.posts, body: post);
         }
+
+        public static IRestResponse UpdatePost(int postId, int userId, string title, string body)
+        {
+            PostCreateModel newPost = new PostCreateModel(userId, title, body);
+            return SendRequest(Method.PUT, ConfigurationAPI.baseURL, Resources.posts + "/" + postId, body: newPost);
+        }
+
+        public static IRestResponse DeletePost(int postId)
+        {
+            return SendRequest(Method.DELETE, ConfigurationAPI.baseURL, Resources.posts + "/" + postId);
+        }
+
+        //actions for other items to be added if necessary
     }
 }

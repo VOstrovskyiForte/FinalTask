@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalTask.Framework
 {
-    public class Data
+    class Generator
     {
 
 
@@ -29,6 +29,11 @@ namespace FinalTask.Framework
         public static string GetRandomEmail()
         {
             return GetRandomString(10) + "@" + GetRandomString(7) + ".com";
+        }
+
+        public static int GetRandomNumber(int maxNumber)
+        {
+            return new Random().Next(maxNumber);
         }
     }
 }

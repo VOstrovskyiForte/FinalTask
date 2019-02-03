@@ -12,7 +12,7 @@ namespace FinalTask.Framework.API
     {
 
 
-        public IRestResponse SendRequest(Method requestMethod, string baseURL, string resource, object body = null, string contentType = "application/json")
+        public static IRestResponse SendRequest(Method requestMethod, string baseURL, string resource, object body = null, string contentType = "application/json")
         {
 
 
@@ -24,10 +24,11 @@ namespace FinalTask.Framework.API
             return client.Execute(request);
         }
 
-        public T DeserializeResponse<T>(IRestResponse response)
+        public static T DeserializeResponse<T>(IRestResponse response)
         {
             JsonDeserializer deserializer = new JsonDeserializer();
             return deserializer.Deserialize<T>(response);
         }
+
     }
 }

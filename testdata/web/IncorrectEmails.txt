@@ -1,0 +1,6 @@
+
+test
+test@
+@mail.com
+test@@mail.com
+test@abc@mail.com
