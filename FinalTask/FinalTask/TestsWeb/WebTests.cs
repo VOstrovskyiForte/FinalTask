@@ -21,7 +21,6 @@ namespace FinalTask.TestsWeb
 
         public HomePage homePage;       
 
-        [SetUp]
         public override void SetUp()
         {
             ChromeOptions options = new ChromeOptions();
@@ -44,7 +43,7 @@ namespace FinalTask.TestsWeb
 
             homePage.SubscribeWithEmail(tempEmail, 300);           
 
-            Assert.That(subscribeMessage, Is.EqualTo("MEMBER EXISTS"));
+            Assert.That(subscribeMessage, Is.EqualTo("dMEMBER EXISTS"));
         }
 
         [Test]
@@ -68,7 +67,6 @@ namespace FinalTask.TestsWeb
             Assert.That(driver.Title, Does.Contain(title));
         }
 
-        [TearDown]
         public override void TearDown()
         {
             driver.Dispose();

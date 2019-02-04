@@ -57,7 +57,7 @@ namespace FinalTask.TestsWeb
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
                 Log.Error("Test case " + TestContext.CurrentContext.Test.MethodName + " is failed with message " + TestContext.CurrentContext.Result.Message);
-                Logging.SaveScreenshotToFolder(driver, ConfigurationWeb.currentRunScreenshotsFolder, TestContext.CurrentContext.Test.MethodName + " " + DateTime.Now.ToString("yyyy-MM-dd, hh-mm"));
+                Logging.SaveScreenshotToFolder(driver, ConfigurationWeb.currentRunScreenshotsFolder, TestContext.CurrentContext.Test.MethodName + " " + DateTime.Now.ToString("yyyy-MM-dd, hh-mm") + ".jpg");
             }
             TearDown();
         }
