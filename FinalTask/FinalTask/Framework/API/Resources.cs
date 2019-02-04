@@ -9,7 +9,6 @@ namespace FinalTask.Framework.API
     public class Resources
     {
 
-
         public static string posts = "/posts";
         public static string comments = "/comments";
         public static string albums = "/albums";

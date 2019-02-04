@@ -12,7 +12,6 @@ namespace FinalTask.Framework.API
     public class Data
     {
 
-
         public class PostsData
         {
             public static IEnumerable Posts

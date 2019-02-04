@@ -26,7 +26,5 @@ namespace FinalTask.Framework
             return @Path.Combine(GetWorkingDirectory(), "..\\..\\..\\..\\");
         }
 
-
-
     }
 }

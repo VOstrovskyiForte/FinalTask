@@ -42,7 +42,7 @@ namespace FinalTask.TestsAPI
 
             Assert.That(createdPostResponse.StatusCode, Is.EqualTo(HttpStatusCode.Created));
 
-            PostIdResponseModel createdPost = deserializer.Deserialize<PostIdResponseModel>(createdPostResponse);
+            PostIdModel createdPost = deserializer.Deserialize<PostIdModel>(createdPostResponse);
 
             Assert.That(createdPost.id, Is.EqualTo(101));
         }
@@ -55,7 +55,7 @@ namespace FinalTask.TestsAPI
 
             Assert.That(updatedPostResponse.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
-            PostIdResponseModel updatedPost = deserializer.Deserialize<PostIdResponseModel>(updatedPostResponse);
+            PostIdModel updatedPost = deserializer.Deserialize<PostIdModel>(updatedPostResponse);
 
             Assert.That(updatedPost.id, Is.EqualTo(postId));
         }

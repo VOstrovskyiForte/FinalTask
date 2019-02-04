@@ -9,15 +9,13 @@ namespace FinalTask.Framework.API.Models
     public class Posts
     {
 
-
-
-        public class PostCreateModel
+        public class CreatePostModel
         {
             public string title { get; set; }
             public string body { get; set; }
             public int userId { get; set; }
 
-            public PostCreateModel(int userId, string title, string body)
+            public CreatePostModel(int userId, string title, string body)
             {
                 this.userId = userId;
                 this.title = title;
@@ -33,7 +31,7 @@ namespace FinalTask.Framework.API.Models
             public int userId { get; set; }
         }
 
-        public class PostIdResponseModel
+        public class PostIdModel
         {
             public int id { get; set; }
         }

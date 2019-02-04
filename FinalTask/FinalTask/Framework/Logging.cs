@@ -13,7 +13,6 @@ namespace FinalTask.Framework
     public class Logging
     {
 
-
         public static Logger CreateLogger(string logFileName)
         {
             return new LoggerConfiguration()

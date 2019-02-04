@@ -13,7 +13,6 @@ namespace FinalTask.Framework.Web
     public class Drivers
     {
 
-
         public static IWebDriver CreateDriver(ChromeOptions chromeOptions = null, FirefoxOptions firefoxOptions = null)
         {
               if (ConfigurationWeb.browser == "chrome")
@@ -35,11 +34,8 @@ namespace FinalTask.Framework.Web
                             return new ChromeDriver();
                         else
                             return new ChromeDriver(chromeOptions);
-                    }
-            
+                    }          
         }
-
-
 
 
     }

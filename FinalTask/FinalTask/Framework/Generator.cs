@@ -9,11 +9,8 @@ namespace FinalTask.Framework
     class Generator
     {
 
-
         public static string GetRandomString(int numberOfCharacters)
         {
-
-
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             var stringChars = new char[numberOfCharacters];
             var random = new Random();

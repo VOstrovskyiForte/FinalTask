@@ -17,7 +17,6 @@ namespace FinalTask.Framework.API
         public static IRestResponse SendRequest(Method requestMethod, string baseURL, string resource, object body = null, string contentType = "application/json;")
         {
 
-
             IRestClient client = new RestClient(baseURL);
             IRestRequest request = new RestRequest(resource, requestMethod);
             if (body != null)

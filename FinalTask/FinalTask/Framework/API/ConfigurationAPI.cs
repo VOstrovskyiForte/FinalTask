@@ -11,7 +11,6 @@ namespace FinalTask.Framework.API
     class ConfigurationAPI
     {
 
-
         public static string baseURL;
         public static string environment;
         public static string reportsFolder;
@@ -21,18 +20,18 @@ namespace FinalTask.Framework.API
         public static void LoadConfiguration()
         {
 
-            string webConfigFilePath = Path.Combine(Folders.GetRootProjectFolder(), "apiconfig.xml");
-            if (!File.Exists(webConfigFilePath))
+            string apiConfigFilePath = Path.Combine(Folders.GetRootProjectFolder(), "apiconfig.xml");
+            if (!File.Exists(apiConfigFilePath))
                 try
                 {
-                    File.Copy(Path.Combine(Folders.GetRootProjectFolder(), "templates/apiconfig.xml"), webConfigFilePath);
+                    File.Copy(Path.Combine(Folders.GetRootProjectFolder(), "templates", "apiconfig.xml"), apiConfigFilePath);
                 }
                 catch
                 {
                     throw new Exception("Config file is not found and cannot be loaded from templates");
                 };
             XmlDocument webConfig = new XmlDocument();
-            webConfig.Load(webConfigFilePath);
+            webConfig.Load(apiConfigFilePath);
             XmlNode settings = webConfig.DocumentElement.SelectSingleNode("/settings");
             baseURL = settings.SelectSingleNode("baseurl").InnerText;
             environment = settings.SelectSingleNode("environment").InnerText;

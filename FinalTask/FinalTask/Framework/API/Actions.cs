@@ -11,11 +11,9 @@ namespace FinalTask.Framework.API
 {
     public class Actions : Methods
     {
-
-
-        public static IRestResponse GetPost(int postid)
+        public static IRestResponse GetPost(int postId)
         {
-            return SendRequest(Method.GET, ConfigurationAPI.baseURL, Resources.posts + "/" + postid);
+            return SendRequest(Method.GET, ConfigurationAPI.baseURL, Resources.posts + "/" + postId);
         }
 
         public static IRestResponse GetAllPosts()
@@ -30,13 +28,13 @@ namespace FinalTask.Framework.API
 
         public static IRestResponse CreatePost(int userId, string title, string body)
         {
-            PostCreateModel post = new PostCreateModel(userId, title, body);
+            CreatePostModel post = new CreatePostModel(userId, title, body);
             return SendRequest(Method.POST, ConfigurationAPI.baseURL, Resources.posts, body: post);
         }
 
         public static IRestResponse UpdatePost(int postId, int userId, string title, string body)
         {
-            PostCreateModel newPost = new PostCreateModel(userId, title, body);
+            CreatePostModel newPost = new CreatePostModel(userId, title, body);
             return SendRequest(Method.PUT, ConfigurationAPI.baseURL, Resources.posts + "/" + postId, body: newPost);
         }
 

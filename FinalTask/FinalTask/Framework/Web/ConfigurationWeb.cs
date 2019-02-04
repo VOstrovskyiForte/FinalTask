@@ -31,7 +31,7 @@ namespace FinalTask.Framework.Web
             if (!File.Exists(webConfigFilePath))
                 try
                     {
-                    File.Copy(Path.Combine(Folders.GetRootProjectFolder(), "templates/webconfig.xml"), webConfigFilePath);
+                    File.Copy(Path.Combine(Folders.GetRootProjectFolder(), "templates", "webconfig.xml"), webConfigFilePath);
                     }
                 catch
                     {
