@@ -1,8 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using FinalTask.Framework.Web;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FinalTask.PageObjects
@@ -42,7 +44,7 @@ namespace FinalTask.PageObjects
         public IWebElement JoinNewsLetterLabel => SubscribePanel.FindElement(By.XPath("//strong[contains(text(),'Newsletter')]"));
         public IWebElement SubscribeEmailField => SubscribePanel.FindElement(By.Id("address"));
         public IWebElement SubscribeButton => SubscribePanel.FindElement(By.XPath("//input[@type='submit']"));
-        public IWebElement SubscribeMessge => SubscribePanel.FindElement(By.XPath("//span[@id='result']/div"));
+        public IWebElement SubscribeMessageLabel => SubscribePanel.FindElement(By.XPath("//span[@id='result']/div"));
 
         public IWebElement BottomPanel => driver.FindElement(By.ClassName("footer-top"));
         public IWebElement FooterFacebookLink => BottomPanel.FindElement(By.XPath("//i[contains(@class,'fa-facebook')]"));
@@ -60,11 +62,14 @@ namespace FinalTask.PageObjects
             return new BasePage(driver);
         }
 
-        public string SubscribeWithEmail(string email)
+        public string SubscribeWithEmail(string email, int sleepMilliseconds = 0)
         {
+            SubscribeEmailField.Clear();
             SubscribeEmailField.SendKeys(email);
-            SubscribeButton.Click();
-            return SubscribeMessge.Text;
+            JavaScript.Click(driver, SubscribeButton);
+            if (sleepMilliseconds != 0)
+                Thread.Sleep(sleepMilliseconds);
+            return SubscribeMessageLabel.Text;
         }
 
         //... other methods will be added if necessary

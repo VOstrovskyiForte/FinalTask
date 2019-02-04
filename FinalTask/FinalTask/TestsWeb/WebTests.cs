@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FinalTask.TestsWeb
@@ -34,16 +35,16 @@ namespace FinalTask.TestsWeb
         {
             homePage = Navigation.OpenHomePage(driver);
 
-            Assert.That(homePage.SubscribeEmailField, Is.Empty);
+            Assert.That(homePage.SubscribeEmailField.Text, Is.EqualTo(""));
 
             string tempEmail = Generator.GetRandomEmail();
             string subscribeMessage = homePage.SubscribeWithEmail(tempEmail);
 
-            Assert.That(subscribeMessage, Is.EqualTo("Got it, you've been added to our email list."));
+            Assert.That(subscribeMessage, Is.EqualTo("GOT IT, YOU'VE BEEN ADDED TO OUR EMAIL LIST."));
 
-            subscribeMessage = homePage.SubscribeWithEmail(tempEmail);
+            homePage.SubscribeWithEmail(tempEmail, 300);           
 
-            Assert.That(subscribeMessage, Is.EqualTo("Member Exists"));
+            Assert.That(subscribeMessage, Is.EqualTo("MEMBER EXISTS"));
         }
 
         [Test]
@@ -53,7 +54,6 @@ namespace FinalTask.TestsWeb
             homePage = Navigation.OpenHomePage(driver);
             string subcribeMessage = homePage.SubscribeWithEmail(email);
             Assert.That(subcribeMessage.ToUpper(), Is.EqualTo("EMAIL ADDRESS IS INVALID"));
-            homePage = (HomePage)homePage.RefreshPage();
         }
 
         [TestCase("Shared Hosting", "Shared Hosting Plans", @"https://phptravels.com/shared-hosting/")]
@@ -62,6 +62,7 @@ namespace FinalTask.TestsWeb
         public void TestHostingMenuLinks(string itemName, string title, string linkUrl)
         {
             homePage = Navigation.OpenHomePage(driver);
+            homePage.MainMenuHostingItem.Click();
             homePage.MainMenuPanel.FindElement(By.LinkText(itemName)).Click();
             Assert.That(driver.Url, Is.EqualTo(linkUrl));
             Assert.That(driver.Title, Does.Contain(title));

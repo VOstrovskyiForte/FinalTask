@@ -16,31 +16,30 @@ namespace FinalTask.Framework.Web
 
         public static IWebDriver CreateDriver(ChromeOptions chromeOptions = null, FirefoxOptions firefoxOptions = null)
         {
-            switch (ConfigurationWeb.browser)
-            {
-                case "chrome":
+              if (ConfigurationWeb.browser == "chrome")
                     {
                         if (chromeOptions == null)
-                            return new ChromeDriver();
+                            return new ChromeDriver();                        
                         else
-                            return new ChromeDriver(chromeOptions);
-                    }                    
-                case "firefox":
+                            return new ChromeDriver(chromeOptions);                        
+                    } else
+              if (ConfigurationWeb.browser == "firefox")
                     {
                         if (firefoxOptions == null)
                             return new FirefoxDriver();
                         else
                             return new FirefoxDriver(firefoxOptions);
-                    }                  
-                default:
+                    } else                 
                     {
                         if (chromeOptions == null)
                             return new ChromeDriver();
                         else
                             return new ChromeDriver(chromeOptions);
                     }
-            }
+            
         }
+
+
 
 
     }

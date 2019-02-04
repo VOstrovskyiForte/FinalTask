@@ -80,6 +80,7 @@
     <Compile Include="Framework\Files.cs" />
     <Compile Include="Framework\Folders.cs" />
     <Compile Include="Framework\Logging.cs" />
+    <Compile Include="Framework\Web\JavaScript.cs" />
     <Compile Include="Framework\Web\Navigation.cs" />
     <Compile Include="PageObjects\BasePage.cs" />
     <Compile Include="PageObjects\HomePage.cs" />
