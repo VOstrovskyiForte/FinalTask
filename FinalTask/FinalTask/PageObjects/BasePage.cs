@@ -17,6 +17,7 @@ namespace FinalTask.PageObjects
 
         //Header
 
+        public IWebElement TopPopupNoThanksButton => driver.FindElement(By.Id("onesignal-popover-cancel-button"));
         public IWebElement MainLogoImage => driver.FindElement(By.XPath("//img[@class='brand']"));
         public IWebElement QuickNewsLeftButton => driver.FindElement(By.XPath("//a[@href='#quick-news' and @data-slide='prev']"));
         public IWebElement QuickNewsRightButton => driver.FindElement(By.XPath("//a[@href='#quick-news' and @data-slide='next']"));
@@ -66,10 +67,41 @@ namespace FinalTask.PageObjects
         {
             SubscribeEmailField.Clear();
             SubscribeEmailField.SendKeys(email);
-            JavaScript.Click(driver, SubscribeButton);
+            SubscribeButton.Click();
             if (sleepMilliseconds != 0)
                 Thread.Sleep(sleepMilliseconds);
             return SubscribeMessageLabel.Text;
+        }
+
+        public void DisablePopup()
+        {
+            Cookie disablePopup = new Cookie("MCPopupClosed", "yes");
+            driver.Manage().Cookies.AddCookie(disablePopup);
+        }
+
+        public bool IsAlertOpened()
+        {
+            try
+            {
+                driver.SwitchTo().Alert();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public void CloseTopPopup()
+        {
+            try
+            {
+                JavaScript.Click(driver, TopPopupNoThanksButton);
+            }
+            catch
+            {
+                
+            }
         }
 
         //... other methods will be added if necessary

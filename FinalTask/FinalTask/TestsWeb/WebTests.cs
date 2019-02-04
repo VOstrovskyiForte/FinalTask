@@ -4,6 +4,7 @@ using FinalTask.PageObjects;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,13 +28,15 @@ namespace FinalTask.TestsWeb
             options.AddArgument("--start-maximized");
             driver = Drivers.CreateDriver(options);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+
+            homePage = Navigation.OpenHomePage(driver);
+            homePage.DisablePopup();
+            homePage.CloseTopPopup();
         }
 
         [Test]
         public void SubscribingToAlreadyUsedEmail()
-        {
-            homePage = Navigation.OpenHomePage(driver);
-
+        {           
             Assert.That(homePage.SubscribeEmailField.Text, Is.EqualTo(""));
 
             string tempEmail = Generator.GetRandomEmail();
@@ -41,9 +44,13 @@ namespace FinalTask.TestsWeb
 
             Assert.That(subscribeMessage, Is.EqualTo("GOT IT, YOU'VE BEEN ADDED TO OUR EMAIL LIST."));
 
-            homePage.SubscribeWithEmail(tempEmail, 300);           
+            homePage.SubscribeWithEmail(tempEmail, 500);
+            WebDriverWait subscribeMessageWait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            subscribeMessageWait.Until(p => homePage.SubscribeMessageLabel.Text != "GOT IT, YOU'VE BEEN ADDED TO OUR EMAIL LIST.");
 
-            Assert.That(subscribeMessage, Is.EqualTo("dMEMBER EXISTS"));
+            subscribeMessage = homePage.SubscribeMessageLabel.Text;
+
+            Assert.That(subscribeMessage, Is.EqualTo("MEMBER EXISTS"));
         }
 
         [Test]
