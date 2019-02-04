@@ -23,25 +23,26 @@ namespace FinalTask.TestsAPI
         [TestCaseSource(typeof(Data.PostsData), "Posts")]
         public void CheckFirstFourPosts(int postId, int userId, string title, string body)
         {
-            var allPostsResponse = Actions.GetAllPosts();
+            IRestResponse allPostsResponse = Actions.GetAllPosts();
 
             Assert.That(allPostsResponse.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
-            PostsListModel allPosts = Methods.DeserializeResponse<PostsListModel>(allPostsResponse);
+            List<PostModel> allPosts = deserializer.Deserialize<List<PostModel>>(allPostsResponse);
 
-            Assert.That(allPosts.posts[postId].userId, Is.EqualTo(userId));
-            Assert.That(allPosts.posts[postId].title, Is.EqualTo(title));
-            Assert.That(allPosts.posts[postId].body, Is.EqualTo(body));
+            var post = (PostModel)allPosts.Where(x => x.id == postId).First();
+            Assert.That(post.userId, Is.EqualTo(userId));
+            Assert.That(post.title, Is.EqualTo(title));
+            Assert.That(post.body, Is.EqualTo(body));
         }
 
         [Test]
         public void CreateSimplePost()
         {
-            var createdPostResponse = Actions.CreatePost(1, "postTitle", "postBody");
+            IRestResponse createdPostResponse = Actions.CreatePost(1, "postTitle", "postBody");
 
             Assert.That(createdPostResponse.StatusCode, Is.EqualTo(HttpStatusCode.Created));
 
-            PostIdResponseModel createdPost = Methods.DeserializeResponse<PostIdResponseModel>(createdPostResponse);
+            PostIdResponseModel createdPost = deserializer.Deserialize<PostIdResponseModel>(createdPostResponse);
 
             Assert.That(createdPost.id, Is.EqualTo(101));
         }
@@ -50,11 +51,11 @@ namespace FinalTask.TestsAPI
         public void UpdateRandomPost()
         {
             int postId = Generator.GetRandomNumber(100);
-            var updatedPostResponse = Actions.UpdatePost(postId, 1, "newTitle", "newBody");
+            IRestResponse updatedPostResponse = Actions.UpdatePost(postId, 1, "newTitle", "newBody");
 
             Assert.That(updatedPostResponse.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
-            PostIdResponseModel updatedPost = Methods.DeserializeResponse<PostIdResponseModel>(updatedPostResponse);
+            PostIdResponseModel updatedPost = deserializer.Deserialize<PostIdResponseModel>(updatedPostResponse);
 
             Assert.That(updatedPost.id, Is.EqualTo(postId));
         }

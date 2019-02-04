@@ -10,6 +10,7 @@ using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System.IO;
 using FinalTask.Framework.API;
+using RestSharp.Serialization.Json;
 
 namespace FinalTask.TestsAPI
 {
@@ -17,6 +18,7 @@ namespace FinalTask.TestsAPI
     {
 
         public static string baseURL = ConfigurationAPI.baseURL;
+        public static JsonDeserializer deserializer = new JsonDeserializer();
 
         [OneTimeSetUp]
         public void BaseOneTimeSetUp()

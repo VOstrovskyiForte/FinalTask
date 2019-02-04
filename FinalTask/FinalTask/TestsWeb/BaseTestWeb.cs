@@ -27,8 +27,7 @@ namespace FinalTask.TestsWeb
 
             ConfigurationWeb.LoadConfiguration();
             ConfigurationWeb.currentRunScreenshotsFolder = ConfigurationWeb.CreateTemporatyScreenshotsFolder();
-            Log.Logger = Logging.CreateLogger(Path.Combine(ConfigurationWeb.reportsFolder, "log" + DateTime.Now.ToString("yyyy-MM-dd HH-dd") + ".txt"));
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+            Log.Logger = Logging.CreateLogger(Path.Combine(ConfigurationWeb.reportsFolder, "log" + DateTime.Now.ToString("yyyy-MM-dd HH-dd") + ".txt"));           
             OneTimeSetUp();
         }
 

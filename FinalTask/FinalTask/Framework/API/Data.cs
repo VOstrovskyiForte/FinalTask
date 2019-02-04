@@ -19,6 +19,8 @@ namespace FinalTask.Framework.API
             {
                 get
                 {
+                    if (ConfigurationAPI.testDataPath == null)
+                        ConfigurationAPI.LoadConfiguration();
                     var reader = new StreamReader(Path.Combine(ConfigurationAPI.testDataPath, "postsData.csv"));
                     List<int> Ids = new List<int>();
                     List<int> userIds = new List<int>();
@@ -27,7 +29,7 @@ namespace FinalTask.Framework.API
                     while(!reader.EndOfStream)
                     {
                         var line = reader.ReadLine();
-                        var values = line.Split(',');
+                        var values = line.Split(';');
                         Ids.Add(int.Parse(values[0]));
                         userIds.Add(int.Parse(values[1]));
                         titles.Add(values[2]);

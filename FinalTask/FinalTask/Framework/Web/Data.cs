@@ -19,6 +19,8 @@ namespace FinalTask.Framework.Web
             {
                 get
                 {
+                    if (ConfigurationWeb.testDataPath == null)
+                        ConfigurationWeb.LoadConfiguration();
                     List<string> incorrectEmails = Data.ReadFromTextFileToList(Path.Combine(ConfigurationWeb.testDataPath, "IncorrectEmails.txt"));
                     foreach (string email in incorrectEmails)
                     {

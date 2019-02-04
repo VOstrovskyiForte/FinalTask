@@ -44,6 +44,7 @@ namespace FinalTask.Framework.Web
             environment = settings.SelectSingleNode("environment").InnerText;
             baseURL = settings.SelectSingleNode("baseurl").InnerText;
             reportsFolder = settings.SelectSingleNode("reportsfolder").InnerText;
+            screenshotsFolder = settings.SelectSingleNode("screenshotsfolder").InnerText;
 
             testDataPath = Path.Combine(Folders.GetRootProjectFolder(), "testdata/web");
         }

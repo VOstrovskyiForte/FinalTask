@@ -26,10 +26,11 @@ namespace FinalTask.TestsWeb
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--start-maximized");
             driver = Drivers.CreateDriver(options);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
         }
 
         [Test]
-        public void VerifyMessageWhenSubscribingToAlreadyUsedEmail()
+        public void SubscribingToAlreadyUsedEmail()
         {
             homePage = Navigation.OpenHomePage(driver);
 
@@ -51,7 +52,7 @@ namespace FinalTask.TestsWeb
         {
             homePage = Navigation.OpenHomePage(driver);
             string subcribeMessage = homePage.SubscribeWithEmail(email);
-            Assert.That(subcribeMessage, Is.EqualTo("Email Address is Invalid"));
+            Assert.That(subcribeMessage.ToUpper(), Is.EqualTo("EMAIL ADDRESS IS INVALID"));
             homePage = (HomePage)homePage.RefreshPage();
         }
 

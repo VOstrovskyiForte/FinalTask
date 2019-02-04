@@ -24,11 +24,5 @@ namespace FinalTask.Framework.API
             return client.Execute(request);
         }
 
-        public static T DeserializeResponse<T>(IRestResponse response)
-        {
-            JsonDeserializer deserializer = new JsonDeserializer();
-            return deserializer.Deserialize<T>(response);
-        }
-
     }
 }

@@ -38,10 +38,7 @@ namespace FinalTask.Framework.API.Models
             public int id { get; set; }
         }
 
-        public class PostsListModel
-        {
-            public List<PostModel> posts { get; set; }
-        }
+        public List<PostModel> PostsListModel { get; set; }
 
 
 
