@@ -32,7 +32,7 @@ namespace FinalTask.TestsAPI
             var post = (PostModel)allPosts.Where(x => x.id == postId).First();
             Assert.That(post.userId, Is.EqualTo(userId));
             Assert.That(post.title, Is.EqualTo(title));
-            Assert.That(post.body, Is.EqualTo(body));
+            Assert.That(post.body, Is.EqualTo(body.Replace("\\n", "\n")));
         }
 
         [Test]
