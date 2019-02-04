@@ -8,7 +8,7 @@ Work with XML configuration files is implemented here. Basic settings are loaded
   - **environment** - release, debug, etc. Not used in current project because there is only release environment
   - **reportsfolder** - folder where logs are saved
 
-# Web
+### Web
   - **browser** - selects the browser, works with chrome and firefox
   - **environment** - release, debug, etc. Not used in current project because there is only release environment
   - **baseurl** - basic website URL
@@ -35,6 +35,6 @@ Web:
   - **JavaScript** - additional using JavaScriptExecutor
   - **Navigation** - opening specific pages and navigation
   
-Only basic webelements and methods are implemented as it is a simple framework. Page objects contains elements needed for running tests. Other elements can be added if needed
+Only basic webelements and methods are implemented as it is a simple framework. Page objects contain elements needed for running tests. Other elements can be added if needed
 
-After running, a log will be saved to file with current time in its name, it can be found in reports folder set in configs. Screenshots of failed tests will be found in a folder with current time in its name. These paths can be configured in config files
+After running, a log will be saved to file with current time in its name, it can be found in reports folder set in configs. Screenshots of failed tests can be found in a folder with current time in its name. These paths can be configured in config files
