@@ -73,7 +73,7 @@ namespace FinalTask.PageObjects
             return SubscribeMessageLabel.Text;
         }
 
-        public void DisablePopup()
+        public void DisableMCPopup()
         {
             Cookie disablePopup = new Cookie("MCPopupClosed", "yes");
             driver.Manage().Cookies.AddCookie(disablePopup);

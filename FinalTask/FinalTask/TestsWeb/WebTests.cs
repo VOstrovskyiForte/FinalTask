@@ -30,7 +30,7 @@ namespace FinalTask.TestsWeb
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
 
             homePage = Navigation.OpenHomePage(driver);
-            homePage.DisablePopup();
+            homePage.DisableMCPopup();
             homePage.CloseTopPopup();
         }
 
