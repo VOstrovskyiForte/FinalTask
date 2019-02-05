@@ -1,6 +1,7 @@
 # PhpTravel and JsonPlaceholder Test Framework
 
 This framework is developed for testing https://phptravels.com/ and https://jsonplaceholder.typicode.com/ websites. It would be better to create a separate solution for each of these websites, but the task was to create one framework
+
 In root directory, there is bat file for running nunit console and generationg Allure report, all needed system variables should be set before running this bat
 
 Work with XML configuration files is implemented here. Basic settings are loaded from the following files apiconfig.xml and webconfig.xml
