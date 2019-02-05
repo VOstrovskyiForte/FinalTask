@@ -10,9 +10,11 @@ using System.Threading.Tasks;
 using FinalTask.Framework.API.Models;
 using static FinalTask.Framework.API.Models.Posts;
 using FinalTask.Framework;
+using NUnit.Allure.Core;
 
 namespace FinalTask.TestsAPI
 {
+    [AllureNUnit]
     [TestFixture]
     class APITests : BaseTestAPI
     {
@@ -20,6 +22,7 @@ namespace FinalTask.TestsAPI
 
 
         [Test]
+        [Category("APITests")]
         [TestCaseSource(typeof(Data.PostsData), "Posts")]
         public void CheckFirstFourPosts(int postId, int userId, string title, string body)
         {
@@ -36,6 +39,7 @@ namespace FinalTask.TestsAPI
         }
 
         [Test]
+        [Category("APITests")]
         public void CreateSimplePost()
         {
             IRestResponse createdPostResponse = Actions.CreatePost(1, "postTitle", "postBody");
@@ -48,6 +52,7 @@ namespace FinalTask.TestsAPI
         }
 
         [Test]
+        [Category("APITests")]
         public void UpdateRandomPost()
         {
             int postId = Generator.GetRandomNumber(100);

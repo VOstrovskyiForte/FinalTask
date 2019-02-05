@@ -1,6 +1,7 @@
 ﻿using FinalTask.Framework;
 using FinalTask.Framework.Web;
 using FinalTask.PageObjects;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -16,6 +17,7 @@ using System.Threading.Tasks;
 
 namespace FinalTask.TestsWeb
 {
+    [AllureNUnit]
     [TestFixture]
     public class WebTests : BaseTestWeb
     {
@@ -34,6 +36,7 @@ namespace FinalTask.TestsWeb
             homePage.CloseTopPopup();
         }
 
+        [Category("WebUITests")]
         [Test]
         public void SubscribingToAlreadyUsedEmail()
         {           
@@ -53,6 +56,7 @@ namespace FinalTask.TestsWeb
             Assert.That(subscribeMessage, Is.EqualTo("MEMBER EXISTS"));
         }
 
+        [Category("WebUITests")]
         [Test]
         [TestCaseSource(typeof(Data.SubscriptionEmails), "IncorrectEmails")]
         public void SubscribeWithIncorrectEmail(string email)
@@ -62,6 +66,7 @@ namespace FinalTask.TestsWeb
             Assert.That(subcribeMessage.ToUpper(), Is.EqualTo("EMAIL ADDRESS IS INVALID"));
         }
 
+        [Category("WebUITests")]
         [TestCase("Shared Hosting", "Shared Hosting Plans", @"https://phptravels.com/shared-hosting/")]
         [TestCase("VPS Hosting", "Managed VPS Hosting", @"https://phptravels.com/vps-hosting/")]
         [TestCase("Dedicated Servers", "Managed Dedicated Servers", @"https://phptravels.com/dedicated-servers/")]
