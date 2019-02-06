@@ -103,6 +103,9 @@
     <Compile Include="TestsWeb\WebTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="allureConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="allureConfig.Template.json" />
     <None Include="app.config" />
     <None Include="packages.config" />
